@@ -1,0 +1,10 @@
+---
+
+  - name: Actualización de /etc/hosts con magic variables
+  lineinfile:
+      path: /etc/hosts
+      line: "{{item.ip}} {{item.hostname}}"
+      state: present
+      create: yes
+  with_items:
+     - "{{ (hostvars[inventory_hostname]['publicIp']) }}"

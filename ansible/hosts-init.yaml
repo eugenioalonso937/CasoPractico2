@@ -1,0 +1,9 @@
+---
+
+  -name: Inicializando todos los server
+    hosts: all
+    vars_files:
+      - "group_vars/"
+    gather_facts: false
+    roles:
+      - common

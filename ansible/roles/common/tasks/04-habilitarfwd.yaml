@@ -1,0 +1,8 @@
+---
+
+  -name: Habilitamos el servicio de Firewalling
+    become: yes
+    ansible.builtin.systemd:
+      state: started
+      enabled: yes
+      name: firewalld

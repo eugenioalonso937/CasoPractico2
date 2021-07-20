@@ -1,0 +1,27 @@
+---
+
+  - name: Configurar timezone Madrid
+    become: yes
+    community.general.timezone:
+      name: Europe/Madrid
+
+  - name: Instalar Chrony
+    become: yes
+    dnf:
+      name:
+        - chrony
+      state: present
+
+  -name: Habilitar chrony
+    become: yes
+    ansible.builtin.systemd:
+      state: started
+      enabled: yes
+      name: chrony
+
+  - name: Habilitamos NTP
+    become: yes
+    ansible.builtin.system:
+      state: started
+      enabled: yes
+      name: ntpd

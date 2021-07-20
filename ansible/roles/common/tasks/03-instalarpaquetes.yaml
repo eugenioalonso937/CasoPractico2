@@ -1,0 +1,11 @@
+---
+
+  - name: instalacion de paqueteria
+    become: yes
+    dnf:
+      name={{item}}
+    state: present
+    with_items:
+      - nfs-utils
+      - nfs4-acl-tools
+      - wget
